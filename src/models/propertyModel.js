@@ -1,16 +1,35 @@
 const mongoose = require('mongoose');
-
-const Task = mongoose.model('Users', {
-    firstName: {
+const Schema = require('mongoose').Schema;
+const validator = require('validator');
+const UserModel = require('../models/userModel');
+const propertySchema = new mongoose.Schema({
+    propertyName: {
         type: String,
         required: true,
         trim: true
     },
-    lastName: {
+    propertyAddress: {
         type: String,
         required: true,
         trim: true
+    },
+    propertyType: {
+        type: String,
+        enum : ['R','C'],
+        default: 'R',
+        required: true,
+        trim: true
+    },
+    user: {
+        type: Schema.Types.ObjectId,
+        ref: 'UserModel'
     }
+   
+  
 })
 
-module.exports = Task
+
+
+const Property = mongoose.model('Property', propertySchema)
+
+module.exports = Property

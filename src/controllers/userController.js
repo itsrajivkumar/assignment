@@ -1,4 +1,4 @@
-const UserModel = require('../models/user')
+const UserModel = require('../models/userModel')
 const auth = require('../middleware/auth')
 
 
@@ -52,7 +52,7 @@ var myProfile = async (req, res) => {
 }
 var updateProfile =  async (req, res) => {
     const updates = Object.keys(req.body)
-    const allowedUpdates = ['name', 'email', 'password', 'dateOfBirth']
+    const allowedUpdates = ['firstName', 'lastName', 'password', 'dateOfBirth']
     const isValidOperation = updates.every((update) => allowedUpdates.includes(update))
 
     if (!isValidOperation) {
@@ -60,7 +60,7 @@ var updateProfile =  async (req, res) => {
     }
 
     try {
-        updates.forEach((update) => req.user[update] = req.body[update])
+        updates.forEach((update) => req.user[update] = req.body[update])        
         await req.user.save()
         res.send(req.user)
     } catch (e) {
