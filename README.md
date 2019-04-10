@@ -25,5 +25,10 @@ Step 2: npm test
 
 # End points
 
-Note: All the end points mentioned in the 
+Note: 
+
+1) : All the end points mentioned in the docs/Assignment.postman_collection.json file
+2) : Also postman link for import collection provided in doc/Assignment.postman_collection.json file
+
+
 
