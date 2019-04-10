@@ -2,7 +2,6 @@ const UserModel = require('../models/userModel')
 const auth = require('../middleware/auth')
 
 
-
 var createUser = async (req, res) => {
     const user = new UserModel(req.body)
 
