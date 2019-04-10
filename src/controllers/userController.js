@@ -1,5 +1,5 @@
-const UserModel = require('../models/userModel')
-const auth = require('../middleware/auth')
+const UserModel = require('../models/userModel');
+const auth = require('../middleware/auth');
 
 
 var createUser = async (req, res) => {
@@ -8,7 +8,7 @@ var createUser = async (req, res) => {
     try {
         await user.save()
         const token = await user.generateAuthToken()
-        res.status(201).send({ user, token })
+        res.status(200).send({ user, token })
     } catch (e) {
         res.status(400).send(e)
     }

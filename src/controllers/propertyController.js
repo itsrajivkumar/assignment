@@ -10,7 +10,7 @@ var createProperty = async (req, res) => {
 
     try {
         await property.save()
-        res.status(201).send({ property, user })
+        res.status(200).send({ property, user })
     } catch (e) {
         res.status(400).send(e)
     }
@@ -22,7 +22,7 @@ var getById = async (req, res) => {
 
     try {
         const properties = await PropertyModel.findOne({ _id: id, user: user._id });
-        res.status(201).send({ properties, user })
+        res.status(200).send({ properties, user })
     } catch (e) {
         res.status(400).send(e)
     }
@@ -32,7 +32,7 @@ var getByUser = async (req, res) => {
 
     try {
         const properties = await PropertyModel.find({ user: user._id });
-        res.status(201).send({ properties, user });
+        res.status(200).send({ properties, user });
     } catch (e) {
         res.status(400).send(e);
     }
@@ -44,7 +44,7 @@ var deleteById = async (req, res) => {
 
     try {
         const properties = await PropertyModel.deleteOne({ _id: id, user: user._id });
-        res.status(201).send({ properties, user })
+        res.status(200).send({ properties, user })
     } catch (e) {
         res.status(400).send(e)
     }
@@ -54,7 +54,7 @@ var deleteByUser = async (req, res) => {
 
     try {
         const properties = await PropertyModel.deleteMany({ user: user._id });
-        res.status(201).send({ properties, user })
+        res.status(200).send({ properties, user })
     } catch (e) {
         res.status(400).send(e)
     }
